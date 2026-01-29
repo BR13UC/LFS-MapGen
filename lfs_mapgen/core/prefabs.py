@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, List, Literal, Optional, Sequence, Tuple
+from typing import Callable, Dict, List, Literal, Optional, Sequence, Tuple
 import json
 import os
 import random
@@ -267,6 +267,7 @@ def apply_prefab_pass_in_place(
     category: Category,
     protected_centers: Sequence[Tuple[int, int]] = (),
     protected_radius: int = 0,
+    on_apply: Optional[Callable[[int], None]] = None,
 ) -> int:
     prefabs = expand_prefabs_with_rotations(prefabs)
     h = len(grid)
@@ -358,6 +359,8 @@ def apply_prefab_pass_in_place(
                 reserved_rects.append((rx1, ry1, rx2, ry2))
 
                 applied += 1
+                if on_apply is not None:
+                    on_apply(applied)
                 break
 
     return applied
