@@ -793,6 +793,129 @@
             { "x": 4, "y": 3, "tile": "WALL_BREAKABLE" },
             { "x": 5, "y": 2, "tile": "WALL_BREAKABLE" }
         ]
+    },
+    {
+        "id": "wall_mix_battlement_7x4",
+        "category": "STRUCTURE",
+        "size": [7, 4],
+        "reserve": [9, 6],
+        "probability": 0.24,
+        "before": [
+            ["ANY", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "ANY"],
+            ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+            ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+            ["ANY", "ANY", "ANY", "ANY", "ANY", "ANY", "ANY"]
+        ],
+        "after": [
+            { "x": 1, "y": 1, "tile": "WALL_INBREAKABLE" },
+            { "x": 3, "y": 1, "tile": "WALL_BREAKABLE" },
+            { "x": 5, "y": 1, "tile": "WALL_INBREAKABLE" },
+            { "x": 3, "y": 2, "tile": "WALL_BREAKABLE" }
+        ]
+    },
+    {
+        "id": "wall_mix_gate_9x5",
+        "category": "STRUCTURE",
+        "size": [9, 5],
+        "reserve": [11, 7],
+        "probability": 0.18,
+        "before": [
+            ["ANY", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "ANY"],
+            ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+            ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+            ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+            ["ANY", "ANY", "ANY", "ANY", "ANY", "ANY", "ANY", "ANY", "ANY"]
+        ],
+        "after": [
+            { "x": 1, "y": 1, "tile": "WALL_INBREAKABLE" },
+            { "x": 2, "y": 1, "tile": "WALL_INBREAKABLE" },
+            { "x": 6, "y": 1, "tile": "WALL_INBREAKABLE" },
+            { "x": 7, "y": 1, "tile": "WALL_INBREAKABLE" },
+
+            { "x": 4, "y": 1, "tile": "WALL_BREAKABLE" },
+            { "x": 4, "y": 2, "tile": "WALL_BREAKABLE" },
+            { "x": 4, "y": 3, "tile": "WALL_BREAKABLE" }
+        ]
+    },
+    {
+        "id": "structure_wall_fortress_9x7",
+        "category": "STRUCTURE",
+        "size": [9, 7],
+        "reserve": [11, 9],
+        "probability": 0.12,
+        "before": [
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+        ],
+        "after": [
+            { "x": 2, "y": 2, "tile": "WALL_INBREAKABLE" },
+            { "x": 6, "y": 2, "tile": "WALL_INBREAKABLE" },
+            { "x": 2, "y": 4, "tile": "WALL_INBREAKABLE" },
+            { "x": 6, "y": 4, "tile": "WALL_INBREAKABLE" },
+
+            { "x": 3, "y": 3, "tile": "WALL_BREAKABLE" },
+            { "x": 4, "y": 3, "tile": "WALL_BREAKABLE" },
+            { "x": 5, "y": 3, "tile": "WALL_BREAKABLE" },
+            { "x": 4, "y": 2, "tile": "WALL_BREAKABLE" },
+            { "x": 4, "y": 4, "tile": "WALL_BREAKABLE" }
+        ]
+    },
+    {
+        "id": "structure_wall_mixed_pillars_7x7",
+        "category": "STRUCTURE",
+        "size": [7, 7],
+        "reserve": [9, 9],
+        "probability": 0.14,
+        "before": [
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+        ],
+        "after": [
+            { "x": 1, "y": 1, "tile": "WALL_INBREAKABLE" },
+            { "x": 1, "y": 5, "tile": "WALL_INBREAKABLE" },
+            { "x": 5, "y": 1, "tile": "WALL_INBREAKABLE" },
+            { "x": 5, "y": 5, "tile": "WALL_INBREAKABLE" },
+
+            { "x": 3, "y": 1, "tile": "WALL_BREAKABLE" },
+            { "x": 1, "y": 3, "tile": "WALL_BREAKABLE" },
+            { "x": 5, "y": 3, "tile": "WALL_BREAKABLE" },
+            { "x": 3, "y": 5, "tile": "WALL_BREAKABLE" }
+        ]
+    },
+    {
+        "id": "feature_spike_dais_9x7",
+        "category": "FEATURE",
+        "size": [9, 7],
+        "reserve": [11, 9],
+        "probability": 0.07,
+        "before": [
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+        ],
+        "after": [
+            { "x": 4, "y": 3, "tile": "WALL_INBREAKABLE" },
+            { "x": 3, "y": 3, "tile": "SPIKE" },
+            { "x": 5, "y": 3, "tile": "SPIKE" },
+            { "x": 4, "y": 2, "tile": "SPIKE" },
+            { "x": 4, "y": 4, "tile": "SPIKE" },
+            { "x": 2, "y": 3, "tile": "SPIKE" },
+            { "x": 6, "y": 3, "tile": "SPIKE" }
+        ]
     }
     ]
 
