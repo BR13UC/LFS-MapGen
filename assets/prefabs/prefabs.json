@@ -151,6 +151,23 @@
                 { "x": 3, "y": 1, "tile": "SPIKE" }
             ]
         },
+        {
+            "id": "feature_spike_along_wall_8x2",
+            "category": "FEATURE",
+            "size": [8, 2],
+            "reserve": [10, 4],
+            "probability": 0.26,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 2, "y": 1, "tile": "SPIKE" },
+                { "x": 3, "y": 1, "tile": "SPIKE" },
+                { "x": 4, "y": 1, "tile": "SPIKE" },
+                { "x": 5, "y": 1, "tile": "SPIKE" }
+            ]
+        },
 
         {
             "id": "feature_hole_near_wall_3x2",
@@ -181,6 +198,21 @@
                 { "x": 3, "y": 1, "tile": "HOLE" }
             ]
         },
+        {
+            "id": "feature_hole_pair_near_wall_7x2",
+            "category": "FEATURE",
+            "size": [7, 2],
+            "reserve": [9, 4],
+            "probability": 0.05,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 2, "y": 1, "tile": "HOLE" },
+                { "x": 4, "y": 1, "tile": "HOLE" }
+            ]
+        },
 
         {
             "id": "feature_water_edge_5x2",
@@ -199,6 +231,24 @@
             ]
         },
         {
+            "id": "feature_water_edge_7x2",
+            "category": "FEATURE",
+            "size": [7, 2],
+            "reserve": [9, 4],
+            "probability": 0.06,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WATER" },
+                { "x": 2, "y": 1, "tile": "WATER" },
+                { "x": 3, "y": 1, "tile": "WATER" },
+                { "x": 4, "y": 1, "tile": "WATER" },
+                { "x": 5, "y": 1, "tile": "WATER" }
+            ]
+        },
+        {
             "id": "feature_water_pocket_near_wall_4x3",
             "category": "FEATURE",
             "size": [4, 3],
@@ -212,6 +262,23 @@
             "after": [
                 { "x": 1, "y": 1, "tile": "WATER" },
                 { "x": 2, "y": 1, "tile": "WATER" }
+            ]
+        },
+        {
+            "id": "feature_water_pocket_near_wall_5x3",
+            "category": "FEATURE",
+            "size": [5, 3],
+            "reserve": [7, 5],
+            "probability": 0.05,
+            "before": [
+                ["ANY", "SOLID", "SOLID", "SOLID", "ANY"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WATER" },
+                { "x": 2, "y": 1, "tile": "WATER" },
+                { "x": 3, "y": 1, "tile": "WATER" }
             ]
         },
 
@@ -231,6 +298,21 @@
             ]
         }
         ,
+        {
+            "id": "feature_spike_in_niche_5x3",
+            "category": "FEATURE",
+            "size": [5, 3],
+            "reserve": [7, 5],
+            "probability": 0.06,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID", "SOLID"],
+                ["SOLID", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "SOLID"],
+                ["ANY", "ANY", "ANY", "ANY", "ANY"]
+            ],
+            "after": [
+                { "x": 2, "y": 1, "tile": "SPIKE" }
+            ]
+        },
         {
             "id": "feature_water_corner_inner_3x3",
             "category": "FEATURE",
@@ -346,6 +428,29 @@
                 { "x": 2, "y": 3, "tile": "SPIKE" }
             ]
         },
+        {
+            "id": "feature_spike_pillar_ring_7x7",
+            "category": "FEATURE",
+            "size": [7, 7],
+            "reserve": [9, 9],
+            "probability": 0.04,
+            "before": [
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 3, "y": 3, "tile": "WALL_BREAKABLE" },
+                { "x": 3, "y": 2, "tile": "SPIKE" },
+                { "x": 2, "y": 3, "tile": "SPIKE" },
+                { "x": 4, "y": 3, "tile": "SPIKE" },
+                { "x": 3, "y": 4, "tile": "SPIKE" }
+            ]
+        },
 
         {
             "id": "structure_wall_block_with_spikes_front_3x3",
@@ -365,6 +470,24 @@
                 { "x": 2, "y": 2, "tile": "SPIKE" }
             ]
         },
+        {
+            "id": "structure_wall_block_with_spikes_front_5x3",
+            "category": "STRUCTURE",
+            "size": [5, 3],
+            "reserve": [7, 5],
+            "probability": 0.06,
+            "before": [
+                ["ANY", "SOLID", "SOLID", "SOLID", "ANY"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 2, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 1, "y": 2, "tile": "SPIKE" },
+                { "x": 2, "y": 2, "tile": "SPIKE" },
+                { "x": 3, "y": 2, "tile": "SPIKE" }
+            ]
+        },
 
         {
             "id": "feature_spike_strip_in_angle_3x3",
@@ -380,6 +503,23 @@
             "after": [
                 { "x": 1, "y": 1, "tile": "SPIKE" },
                 { "x": 2, "y": 1, "tile": "SPIKE" }
+            ]
+        },
+        {
+            "id": "feature_spike_strip_in_angle_5x3",
+            "category": "FEATURE",
+            "size": [5, 3],
+            "reserve": [7, 5],
+            "probability": 0.06,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "ANY", "ANY"],
+                ["SOLID", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "ANY"],
+                ["ANY", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "ANY"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "SPIKE" },
+                { "x": 2, "y": 1, "tile": "SPIKE" },
+                { "x": 3, "y": 1, "tile": "SPIKE" }
             ]
         },
         {
