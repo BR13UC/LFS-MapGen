@@ -219,8 +219,16 @@ class MapGenApp:
     def generate_map(self) -> None:
         self._update_generation_params_from_inputs()
         gen = MapGenerator(self.cfg.generation)
-        self.map_data = gen.generate()
+        self.map_data = gen.generate(on_step=self._render_generation_step)
         self.renderer.set_map(self.map_data)
+
+    def _render_generation_step(self, map_data: MapData, stage: str) -> None:
+        self.map_data = map_data
+        self.renderer.set_map(map_data)
+        self.renderer.draw()
+        self.draw_ui()
+        pygame.display.flip()
+        pygame.event.pump()
 
     # ----------------------------------------------------------------- IO
 

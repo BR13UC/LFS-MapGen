@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import random
-from typing import List, Tuple, Set
+from typing import Callable, List, Optional, Set, Tuple
 
 from .config import GenerationParams
 from .types import MapData, MapGrid, SpawnDict
@@ -16,7 +16,7 @@ class MapGenerator:
         self.params = params
         self.random = random.Random(params.seed)
 
-    def generate(self) -> MapData:
+    def generate(self, on_step: Optional[Callable[[MapData, str], None]] = None) -> MapData:
         p = self.params
 
         team_a = list(p.team_a_spawns)
@@ -30,6 +30,10 @@ class MapGenerator:
                 for xx in range(sx - p.spawn_clear_radius, sx + p.spawn_clear_radius + 1):
                     protected.add((xx, yy))
 
+        def emit(stage: str) -> None:
+            if on_step is not None:
+                on_step(MapData(grid=grid, spawns=spawns), stage)
+
         # 1) CA base walls/floors
         grid = generate_ca_walls_grid(
             width=p.width,
@@ -40,10 +44,12 @@ class MapGenerator:
             birth_limit=p.ca_birth_limit,
             death_limit=p.ca_death_limit,
         )
+        emit("base")
 
         # 2) Force-clear spawn zones (after CA too)
         for sx, sy in team_a + team_b:
             carve_disk(grid, sx, sy, p.spawn_clear_radius, tile="FL")
+        emit("spawns")
 
         # 3) Ensure connectivity by carving corridors between spawns
         if p.enforce_connected_floor:
@@ -66,9 +72,11 @@ class MapGenerator:
                 corridor_radius=p.corridor_radius,
                 protected_radius=p.spawn_clear_radius,
             )
+            emit("corridors")
 
         # 3c) turn any walls not adjacent to floor into indestructible walls
         convert_hidden_walls_to_indestructible_in_place(grid)
+        emit("hidden-walls")
 
         # 4) Place prefabs
         if getattr(p, "prefabs_enabled", True):
@@ -89,6 +97,7 @@ class MapGenerator:
                     category="STRUCTURE",
                     protected_centers=(team_a + team_b),
                     protected_radius=p.spawn_clear_radius,
+                    on_apply=lambda _: emit("prefab-structure"),
                 )
                 apply_prefab_pass_in_place(
                     grid=grid,
@@ -97,6 +106,7 @@ class MapGenerator:
                     category="FEATURE",
                     protected_centers=(team_a + team_b),
                     protected_radius=p.spawn_clear_radius,
+                    on_apply=lambda _: emit("prefab-feature"),
                 )
 
 
