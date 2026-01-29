@@ -113,7 +113,7 @@
             "FL",
             "FL",
             "WL",
-            "WL",
+            "IW",
             "FL",
             "FL",
             "FL",
@@ -231,7 +231,7 @@
             "FL",
             "FL",
             "FL",
-            "WL",
+            "IW",
             "WL",
             "FL",
             "FL",
@@ -374,8 +374,8 @@
         ]
     },
     "generation_params": {
-        "width": 15,
-        "height": 20,
+        "width": 40,
+        "height": 40,
         "floor_percent": 0.55,
         "wall_percent": 0.1,
         "breakable_wall_percent": 0.1,

@@ -1,0 +1,711 @@
+{
+    "prefabs": [
+        {
+            "id": "wall_double_tooth_5x3",
+            "category": "STRUCTURE",
+            "size": [5, 4],
+            "reserve": [7, 5],
+            "probability": 0.38,
+            "before": [
+                ["ANY", "SOLID", "SOLID", "SOLID", "ANY"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 3, "y": 1, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+        {
+            "id": "wall_triple_tooth_7x3",
+            "category": "STRUCTURE",
+            "size": [7, 3],
+            "reserve": [9, 5],
+            "probability": 0.34,
+            "before": [
+                ["ANY", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "ANY"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["ANY", "ANY", "ANY", "ANY", "ANY", "ANY", "ANY"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 3, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 5, "y": 1, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+
+        {
+            "id": "wall_buttress_5x4",
+            "category": "STRUCTURE",
+            "size": [5, 4],
+            "reserve": [7, 6],
+            "probability": 0.36,
+            "before": [
+                ["ANY", "SOLID", "SOLID", "SOLID", "ANY"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["ANY", "ANY", "ANY", "ANY", "ANY"]
+            ],
+            "after": [
+                { "x": 2, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+        {
+            "id": "wall_buttress_5x4_mirror",
+            "category": "STRUCTURE",
+            "size": [5, 4],
+            "reserve": [7, 6],
+            "probability": 0.36,
+            "before": [
+                ["ANY", "SOLID", "SOLID", "SOLID", "ANY"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["ANY", "ANY", "ANY", "ANY", "ANY"]
+            ],
+            "after": [
+                { "x": 2, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 1, "y": 2, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+
+        {
+            "id": "wall_niche_3x3",
+            "category": "STRUCTURE",
+            "size": [3, 3],
+            "reserve": [5, 5],
+            "probability": 0.34,
+            "before": [
+                ["SOLID", "SOLID", "SOLID"],
+                ["SOLID", "SOLID", "SOLID"],
+                ["ANY", "ANY", "ANY"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "FLOOR" }
+            ]
+        },
+        {
+            "id": "wall_niche_deep_4x3",
+            "category": "STRUCTURE",
+            "size": [4, 3],
+            "reserve": [6, 5],
+            "probability": 0.30,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID"],
+                ["SOLID", "SOLID", "SOLID", "SOLID"],
+                ["ANY", "ANY", "ANY", "ANY"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "FLOOR" },
+                { "x": 2, "y": 1, "tile": "FLOOR" }
+            ]
+        },
+
+        {
+            "id": "wall_crenel_7x3",
+            "category": "STRUCTURE",
+            "size": [7, 3],
+            "reserve": [9, 5],
+            "probability": 0.32,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["ANY", "ANY", "ANY", "ANY", "ANY", "ANY", "ANY"]
+            ],
+            "after": [
+                { "x": 1, "y": 0, "tile": "FLOOR" },
+                { "x": 3, "y": 0, "tile": "FLOOR" },
+                { "x": 5, "y": 0, "tile": "FLOOR" }
+            ]
+        },
+
+
+        {
+            "id": "feature_spike_along_wall_4x2",
+            "category": "FEATURE",
+            "size": [4, 2],
+            "reserve": [6, 4],
+            "probability": 0.34,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "SPIKE" },
+                { "x": 2, "y": 1, "tile": "SPIKE" }
+            ]
+        },
+        {
+            "id": "feature_spike_along_wall_6x2",
+            "category": "FEATURE",
+            "size": [6, 2],
+            "reserve": [8, 4],
+            "probability": 0.30,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 2, "y": 1, "tile": "SPIKE" },
+                { "x": 3, "y": 1, "tile": "SPIKE" }
+            ]
+        },
+
+        {
+            "id": "feature_hole_near_wall_3x2",
+            "category": "FEATURE",
+            "size": [3, 2],
+            "reserve": [5, 4],
+            "probability": 0.08,
+            "before": [
+                ["SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "HOLE" }
+            ]
+        },
+        {
+            "id": "feature_hole_pair_near_wall_5x2",
+            "category": "FEATURE",
+            "size": [5, 2],
+            "reserve": [7, 4],
+            "probability": 0.06,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "HOLE" },
+                { "x": 3, "y": 1, "tile": "HOLE" }
+            ]
+        },
+
+        {
+            "id": "feature_water_edge_5x2",
+            "category": "FEATURE",
+            "size": [5, 2],
+            "reserve": [7, 4],
+            "probability": 0.08,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WATER" },
+                { "x": 2, "y": 1, "tile": "WATER" },
+                { "x": 3, "y": 1, "tile": "WATER" }
+            ]
+        },
+        {
+            "id": "feature_water_pocket_near_wall_4x3",
+            "category": "FEATURE",
+            "size": [4, 3],
+            "reserve": [6, 5],
+            "probability": 0.06,
+            "before": [
+                ["ANY", "SOLID", "SOLID", "ANY"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WATER" },
+                { "x": 2, "y": 1, "tile": "WATER" }
+            ]
+        },
+
+        {
+            "id": "feature_spike_in_niche_3x3",
+            "category": "FEATURE",
+            "size": [3, 3],
+            "reserve": [5, 5],
+            "probability": 0.08,
+            "before": [
+                ["SOLID", "SOLID", "SOLID"],
+                ["SOLID", "MT:FLOOR", "SOLID"],
+                ["ANY", "ANY", "ANY"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "SPIKE" }
+            ]
+        }
+        ,
+        {
+            "id": "feature_water_corner_inner_3x3",
+            "category": "FEATURE",
+            "size": [3, 3],
+            "reserve": [5, 5],
+            "probability": 0.08,
+            "before": [
+                ["SOLID", "SOLID", "ANY"],
+                ["SOLID", "MT:FLOOR", "MT:FLOOR"],
+                ["ANY", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WATER" }
+            ]
+        },
+        {
+            "id": "feature_water_corner_inner_3x3_mirror",
+            "category": "FEATURE",
+            "size": [3, 3],
+            "reserve": [5, 5],
+            "probability": 0.08,
+            "before": [
+                ["ANY", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "ANY"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WATER" }
+            ]
+        },
+        {
+            "id": "feature_water_culdesac_3x3",
+            "category": "FEATURE",
+            "size": [3, 3],
+            "reserve": [5, 5],
+            "probability": 0.07,
+            "before": [
+                ["ANY",   "SOLID", "ANY"],
+                ["SOLID", "MT:FLOOR", "SOLID"],
+                ["ANY",   "MT:FLOOR", "ANY"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WATER" }
+            ]
+        },
+        {
+            "id": "feature_water_pocket_along_wall_4x3",
+            "category": "FEATURE",
+            "size": [4, 3],
+            "reserve": [6, 5],
+            "probability": 0.06,
+            "before": [
+                ["SOLID", "SOLID", "SOLID", "SOLID"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WATER" },
+                { "x": 2, "y": 1, "tile": "WATER" }
+            ]
+        },
+
+        {
+            "id": "feature_hole_corner_inner_3x3",
+            "category": "FEATURE",
+            "size": [3, 3],
+            "reserve": [5, 5],
+            "probability": 0.05,
+            "before": [
+                ["SOLID", "SOLID", "ANY"],
+                ["SOLID", "MT:FLOOR", "MT:FLOOR"],
+                ["ANY", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "HOLE" }
+            ]
+        },
+        {
+            "id": "feature_hole_culdesac_3x3",
+            "category": "FEATURE",
+            "size": [3, 3],
+            "reserve": [5, 5],
+            "probability": 0.04,
+            "before": [
+                ["ANY",   "SOLID", "ANY"],
+                ["SOLID", "MT:FLOOR", "SOLID"],
+                ["ANY",   "MT:FLOOR", "ANY"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "HOLE" }
+            ]
+        },
+
+        {
+            "id": "feature_spike_pillar_ring_5x5",
+            "category": "FEATURE",
+            "size": [5, 5],
+            "reserve": [7, 7],
+            "probability": 0.06,
+            "before": [
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" },
+
+                { "x": 2, "y": 1, "tile": "SPIKE" },
+                { "x": 1, "y": 2, "tile": "SPIKE" },
+                { "x": 3, "y": 2, "tile": "SPIKE" },
+                { "x": 2, "y": 3, "tile": "SPIKE" }
+            ]
+        },
+
+        {
+            "id": "structure_wall_block_with_spikes_front_3x3",
+            "category": "STRUCTURE",
+            "size": [3, 3],
+            "reserve": [5, 5],
+            "probability": 0.09,
+            "before": [
+                ["ANY", "SOLID", "ANY"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR"],
+                ["MT:FLOOR", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 0, "y": 2, "tile": "SPIKE" },
+                { "x": 1, "y": 2, "tile": "SPIKE" },
+                { "x": 2, "y": 2, "tile": "SPIKE" }
+            ]
+        },
+
+        {
+            "id": "feature_spike_strip_in_angle_3x3",
+            "category": "FEATURE",
+            "size": [3, 3],
+            "reserve": [5, 5],
+            "probability": 0.08,
+            "before": [
+                ["SOLID", "SOLID", "ANY"],
+                ["SOLID", "MT:FLOOR", "MT:FLOOR"],
+                ["ANY", "MT:FLOOR", "MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "SPIKE" },
+                { "x": 2, "y": 1, "tile": "SPIKE" }
+            ]
+        },
+        {
+            "id": "alley_big_columns_7x5_pair",
+            "category": "STRUCTURE",
+            "size": [7, 5],
+            "reserve": [9, 7],
+            "probability": 0.32,
+            "before": [
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 1, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 1, "y": 3, "tile": "WALL_BREAKABLE" },
+
+                { "x": 5, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 5, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 5, "y": 3, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+
+        {
+            "id": "alley_big_columns_9x5_pair_wider",
+            "category": "STRUCTURE",
+            "size": [9, 5],
+            "reserve": [11, 7],
+            "probability": 0.30,
+            "before": [
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 1, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 1, "y": 3, "tile": "WALL_BREAKABLE" },
+
+                { "x": 7, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 7, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 7, "y": 3, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+
+        {
+            "id": "alley_big_columns_7x7_blocks",
+            "category": "STRUCTURE",
+            "size": [7, 7],
+            "reserve": [9, 9],
+            "probability": 0.08,
+            "before": [
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 1, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" },
+
+                { "x": 4, "y": 4, "tile": "WALL_BREAKABLE" },
+                { "x": 5, "y": 4, "tile": "WALL_BREAKABLE" },
+                { "x": 4, "y": 5, "tile": "WALL_BREAKABLE" },
+                { "x": 5, "y": 5, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+
+        {
+            "id": "alley_big_columns_9x7_four_blocks",
+            "category": "STRUCTURE",
+            "size": [9, 7],
+            "reserve": [11, 9],
+            "probability": 0.06,
+            "before": [
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 1, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" },
+
+                { "x": 6, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 7, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 6, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 7, "y": 2, "tile": "WALL_BREAKABLE" },
+
+                { "x": 1, "y": 4, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 4, "tile": "WALL_BREAKABLE" },
+                { "x": 1, "y": 5, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 5, "tile": "WALL_BREAKABLE" },
+
+                { "x": 6, "y": 4, "tile": "WALL_BREAKABLE" },
+                { "x": 7, "y": 4, "tile": "WALL_BREAKABLE" },
+                { "x": 6, "y": 5, "tile": "WALL_BREAKABLE" },
+                { "x": 7, "y": 5, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+
+        {
+            "id": "alley_slalom_9x5",
+            "category": "STRUCTURE",
+            "size": [9, 5],
+            "reserve": [11, 7],
+            "probability": 0.09,
+            "before": [
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 2, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 3, "tile": "WALL_BREAKABLE" },
+
+                { "x": 6, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 6, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 6, "y": 3, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+
+        {
+            "id": "alley_slalom_9x5_mirror",
+            "category": "STRUCTURE",
+            "size": [9, 5],
+            "reserve": [11, 7],
+            "probability": 0.09,
+            "before": [
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 6, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 6, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 6, "y": 3, "tile": "WALL_BREAKABLE" },
+
+                { "x": 2, "y": 1, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 2, "y": 3, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+
+        {
+            "id": "alley_big_plus_columns_9x7",
+            "category": "STRUCTURE",
+            "size": [9, 7],
+            "reserve": [11, 9],
+            "probability": 0.05,
+            "before": [
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+                ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+            ],
+            "after": [
+                { "x": 2, "y": 3, "tile": "WALL_BREAKABLE" },
+                { "x": 3, "y": 3, "tile": "WALL_BREAKABLE" },
+                { "x": 4, "y": 3, "tile": "WALL_BREAKABLE" },
+                { "x": 3, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 3, "y": 4, "tile": "WALL_BREAKABLE" },
+
+                { "x": 6, "y": 3, "tile": "WALL_BREAKABLE" },
+                { "x": 5, "y": 3, "tile": "WALL_BREAKABLE" },
+                { "x": 7, "y": 3, "tile": "WALL_BREAKABLE" },
+                { "x": 6, "y": 2, "tile": "WALL_BREAKABLE" },
+                { "x": 6, "y": 4, "tile": "WALL_BREAKABLE" }
+            ]
+        },
+        {
+        "id": "diag_stairs_small_5x5_nw_se",
+        "category": "STRUCTURE",
+        "size": [5, 5],
+        "reserve": [7, 7],
+        "probability": 0.32,
+        "before": [
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+        ],
+        "after": [
+            { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+            { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" },
+            { "x": 3, "y": 3, "tile": "WALL_BREAKABLE" }
+        ]
+    },
+    {
+        "id": "diag_stairs_small_5x5_ne_sw",
+        "category": "STRUCTURE",
+        "size": [5, 5],
+        "reserve": [7, 7],
+        "probability": 0.32,
+        "before": [
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+        ],
+        "after": [
+            { "x": 3, "y": 1, "tile": "WALL_BREAKABLE" },
+            { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" },
+            { "x": 1, "y": 3, "tile": "WALL_BREAKABLE" }
+        ]
+    },
+
+    {
+        "id": "diag_band_7x5_nw_se",
+        "category": "STRUCTURE",
+        "size": [7, 5],
+        "reserve": [9, 7],
+        "probability": 0.30,
+        "before": [
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+        ],
+        "after": [
+            { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+            { "x": 2, "y": 1, "tile": "WALL_BREAKABLE" },
+
+            { "x": 3, "y": 2, "tile": "WALL_BREAKABLE" },
+            { "x": 4, "y": 2, "tile": "WALL_BREAKABLE" },
+
+            { "x": 5, "y": 3, "tile": "WALL_BREAKABLE" }
+        ]
+    },
+    {
+        "id": "diag_band_7x5_ne_sw",
+        "category": "STRUCTURE",
+        "size": [7, 5],
+        "reserve": [9, 7],
+        "probability": 0.30,
+        "before": [
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+        ],
+        "after": [
+            { "x": 5, "y": 1, "tile": "WALL_BREAKABLE" },
+            { "x": 4, "y": 1, "tile": "WALL_BREAKABLE" },
+
+            { "x": 3, "y": 2, "tile": "WALL_BREAKABLE" },
+            { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" },
+
+            { "x": 1, "y": 3, "tile": "WALL_BREAKABLE" }
+        ]
+    },
+
+    {
+        "id": "diag_zigzag_9x5",
+        "category": "STRUCTURE",
+        "size": [9, 5],
+        "reserve": [11, 7],
+        "probability": 0.08,
+        "before": [
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+        ],
+        "after": [
+            { "x": 1, "y": 1, "tile": "WALL_BREAKABLE" },
+            { "x": 2, "y": 2, "tile": "WALL_BREAKABLE" },
+            { "x": 3, "y": 3, "tile": "WALL_BREAKABLE" },
+
+            { "x": 5, "y": 3, "tile": "WALL_BREAKABLE" },
+            { "x": 6, "y": 2, "tile": "WALL_BREAKABLE" },
+            { "x": 7, "y": 1, "tile": "WALL_BREAKABLE" }
+        ]
+    },
+
+    {
+        "id": "diag_cluster_dense_7x7",
+        "category": "STRUCTURE",
+        "size": [7, 7],
+        "reserve": [9, 9],
+        "probability": 0.05,
+        "before": [
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
+            ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"]
+        ],
+        "after": [
+            { "x": 1, "y": 2, "tile": "WALL_BREAKABLE" },
+            { "x": 2, "y": 3, "tile": "WALL_BREAKABLE" },
+            { "x": 3, "y": 4, "tile": "WALL_BREAKABLE" },
+            { "x": 4, "y": 3, "tile": "WALL_BREAKABLE" },
+            { "x": 5, "y": 2, "tile": "WALL_BREAKABLE" }
+        ]
+    }
+    ]
+
+}

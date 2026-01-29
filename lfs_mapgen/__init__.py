@@ -1,6 +1,6 @@
 from __future__ import annotations
 from .core.config import GenerationParams
-from .core.generation import MapGenerator
+from lfs_mapgen.core.generation import MapGenerator
 from .core.types import MapData, MapGrid, SpawnDict
 from .core.tiles import TileId, VALID_TILES, TILE_COLORS, PALETTE_TILES
 

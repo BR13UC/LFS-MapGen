@@ -58,9 +58,6 @@ class MapGenApp:
 
         g = self.cfg.generation
 
-        def pct(v: float) -> str:
-            return str(int(v * 100))
-
         # --- map size inputs -------------------------------------------------
         self.input_width = TextInput(
             rect=pygame.Rect(0, 0, 10, 10),
@@ -77,54 +74,34 @@ class MapGenApp:
             max_length=4,
         )
 
-        # --- tile percentage inputs -----------------------------------------
-        self.input_floor = TextInput(
-            rect=pygame.Rect(0, 0, 10, 10),
-            font=self.font,
-            text=pct(g.floor_percent),
-            placeholder="Floor%",
-        )
-        self.input_wall_iw = TextInput(
-            rect=pygame.Rect(0, 0, 10, 10),
-            font=self.font,
-            text=pct(g.wall_percent),
-            placeholder="Indestr.%",
-        )
-        self.input_wall_wl = TextInput(
-            rect=pygame.Rect(0, 0, 10, 10),
-            font=self.font,
-            text=pct(g.breakable_wall_percent),
-            placeholder="Wall%",
-        )
-        self.input_water = TextInput(
-            rect=pygame.Rect(0, 0, 10, 10),
-            font=self.font,
-            text=pct(g.water_percent),
-            placeholder="Water%",
-        )
-        self.input_holes = TextInput(
-            rect=pygame.Rect(0, 0, 10, 10),
-            font=self.font,
-            text=pct(g.holes_percent),
-            placeholder="Hole%",
-        )
-        self.input_spikes = TextInput(
-            rect=pygame.Rect(0, 0, 10, 10),
-            font=self.font,
-            text=pct(g.spikes_percent),
-            placeholder="Spikes%",
-        )
+        # --- spawn inputs (Team A) -----------------------------------------
+        self.spawn_inputs_a: list[tuple[TextInput, TextInput]] = []
+
+        defaults = self.cfg.generation.team_a_spawns
+
+        for i in range(3):
+            x, y = defaults[i]
+            self.spawn_inputs_a.append((
+                TextInput(
+                    rect=pygame.Rect(0, 0, 10, 10),
+                    font=self.font,
+                    text=str(x),
+                    placeholder="x",
+                    max_length=3,
+                ),
+                TextInput(
+                    rect=pygame.Rect(0, 0, 10, 10),
+                    font=self.font,
+                    text=str(y),
+                    placeholder="y",
+                    max_length=3,
+                ),
+            ))
 
         # order = order in sidebar
         self.tile_inputs = [
             self.input_width,
-            self.input_height,
-            self.input_floor,
-            self.input_wall_iw,
-            self.input_wall_wl,
-            self.input_water,
-            self.input_holes,
-            self.input_spikes,
+            self.input_height
         ]
 
         self.update_load_dropdown()
@@ -144,9 +121,11 @@ class MapGenApp:
         w = sidebar_width - 20
         y = 10
         h_btn = 32
+        h_input = 28
         gap = 8
+        bottom_margin = 10
 
-        # buttons
+        # --- top buttons ------------------------------------------------------
         self.btn_generate.rect = pygame.Rect(x, y, w, h_btn)
         y += h_btn + gap
 
@@ -159,17 +138,47 @@ class MapGenApp:
         self.dropdown_load.rect = pygame.Rect(x, y, w, h_btn)
         y += h_btn + gap
 
-        # palette starts below buttons + load, and above tile % inputs
+        # --- spawns (Team A) --------------------------------------------------
+        for x_in, y_in in self.spawn_inputs_a:
+            x_in.rect = pygame.Rect(x, y, (w - gap) // 2, h_input)
+            y_in.rect = pygame.Rect(x + (w + gap) // 2, y, (w - gap) // 2, h_input)
+            y += h_input + gap
+
+        # palette starts below buttons + spawns, and above bottom inputs
         self.renderer.palette_offset_y = y + 4
 
-        # height of palette so we can place inputs after it
+        # --- bottom inputs block (tile % + map size, etc.) --------------------
+        bottom_inputs_count = len(self.tile_inputs)
+        if bottom_inputs_count > 0:
+            bottom_block_h = bottom_inputs_count * h_input + (bottom_inputs_count - 1) * gap
+        else:
+            bottom_block_h = 0
+
+        # available vertical space for palette
+        available_palette_h = (
+            height
+            - self.renderer.palette_offset_y
+            - gap
+            - bottom_block_h
+            - bottom_margin
+        )
+
+        # --- autoscale palette tile size to prevent overlap -------------------
+        n_items = max(1, len(self.renderer.palette_items))
+        default_tile_size = self.cfg.render.palette_tile_size_px if hasattr(self.cfg.render, "palette_tile_size_px") else self.renderer.palette_tile_size
+
+        # palette_height ~= 8 + n_items * (tile_size + 4)
+        computed_tile_size = int((max(0, available_palette_h) - 8) / n_items - 4)
+
+        # clamp to keep it usable
+        self.renderer.palette_tile_size = max(16, min(default_tile_size, computed_tile_size))
+
+        # final palette height with resized tile size
         palette_item_h = self.renderer.palette_tile_size + 4
-        palette_height = 4 + len(self.renderer.palette_items) * palette_item_h + 4
+        palette_height = 8 + n_items * palette_item_h
 
+        # --- place bottom inputs right after palette --------------------------
         y_inputs = self.renderer.palette_offset_y + palette_height + gap
-
-        # tile percentage inputs stacked at the bottom of the sidebar
-        h_input = 28
         for inp in self.tile_inputs:
             inp.rect = pygame.Rect(x, y_inputs, w, h_input)
             y_inputs += h_input + gap
@@ -188,18 +197,6 @@ class MapGenApp:
     # -------------------------------------------------------------- Generation
 
     def _update_generation_params_from_inputs(self) -> None:
-        def parse_percent(text: str, fallback: float) -> float:
-            text = text.strip()
-            if not text:
-                return fallback
-            try:
-                val = float(text)
-            except ValueError:
-                return fallback
-            if val > 1.0:
-                val /= 100.0
-            return max(0.0, min(1.0, val))
-
         def parse_int(text: str, fallback: int, min_val: int, max_val: int) -> int:
             text = text.strip()
             if not text:
@@ -212,20 +209,12 @@ class MapGenApp:
 
         g = self.cfg.generation
 
-        # --- new: map size from sidebar ------------------------------------
+        # map size from sidebar
         g.width = parse_int(self.input_width.text, g.width, 5, 200)
         g.height = parse_int(self.input_height.text, g.height, 5, 200)
 
-        # existing tile percentages
-        g.floor_percent = parse_percent(self.input_floor.text, g.floor_percent)
-        g.wall_percent = parse_percent(self.input_wall_iw.text, g.wall_percent)
-        g.breakable_wall_percent = parse_percent(
-            self.input_wall_wl.text, g.breakable_wall_percent
-        )
-        g.water_percent = parse_percent(self.input_water.text, g.water_percent)
-        g.holes_percent = parse_percent(self.input_holes.text, g.holes_percent)
-        g.spikes_percent = parse_percent(self.input_spikes.text, g.spikes_percent)
-
+        # team A spawns from sidebar (keep this if you still want spawn inputs)
+        g.team_a_spawns = self._read_team_a_spawns()
 
     def generate_map(self) -> None:
         self._update_generation_params_from_inputs()
@@ -301,6 +290,9 @@ class MapGenApp:
             self.dropdown_load.handle_event(event)
             for inp in self.tile_inputs:
                 inp.handle_event(event)
+            for x_in, y_in in self.spawn_inputs_a:
+                x_in.handle_event(event)
+                y_in.handle_event(event)
 
             # palette selection
             if self.renderer.is_in_palette(x, y):
@@ -337,6 +329,9 @@ class MapGenApp:
         self.dropdown_load.handle_event(event)
         for inp in self.tile_inputs:
             inp.handle_event(event)
+        for x_in, y_in in self.spawn_inputs_a:
+            x_in.handle_event(event)
+            y_in.handle_event(event)
 
         x, y = event.pos
 
@@ -379,6 +374,9 @@ class MapGenApp:
         self.dropdown_load.draw(self.window)
         for inp in self.tile_inputs:
             inp.draw(self.window)
+        for x_in, y_in in self.spawn_inputs_a:
+            x_in.draw(self.window)
+            y_in.draw(self.window)
 
     # ------------------------------------------------------------- Main loop
 
@@ -418,6 +416,9 @@ class MapGenApp:
                     self.save_name_input.handle_event(event)
                     for inp in self.tile_inputs:
                         inp.handle_event(event)
+                    for x_in, y_in in self.spawn_inputs_a:
+                        x_in.handle_event(event)
+                        y_in.handle_event(event)
 
             self.renderer.draw()
             self.draw_ui()
@@ -425,3 +426,32 @@ class MapGenApp:
 
         pygame.quit()
         sys.exit()
+
+    def _read_team_a_spawns(self) -> list[tuple[int, int]]:
+        w = self.cfg.generation.width
+        h = self.cfg.generation.height
+
+        out: list[tuple[int, int]] = []
+        used = set()
+
+        for x_in, y_in in self.spawn_inputs_a:
+            try:
+                x = int(x_in.text)
+            except ValueError:
+                x = 0
+            try:
+                y = int(y_in.text)
+            except ValueError:
+                y = 0
+
+            x = max(0, min(w - 1, x))
+            y = max(0, min(h - 1, y))
+
+            # éviter doublons
+            while (x, y) in used:
+                x = min(w - 1, x + 1)
+
+            used.add((x, y))
+            out.append((x, y))
+
+        return out

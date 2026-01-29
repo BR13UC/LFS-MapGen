@@ -1,10 +1,14 @@
 from __future__ import annotations
+
 import random
-from typing import List
-from .tiles import TileId, PALETTE_TILES
-from .types import MapData, MapGrid, SpawnDict
+from typing import List, Tuple, Set
+
 from .config import GenerationParams
-from .rules import ensure_connectivity
+from .types import MapData, MapGrid, SpawnDict
+from .ca_walls import generate_ca_walls_grid, mirror_spawns_vertical, carve_disk
+from .connectivity import connect_spawns_in_place, connect_all_floor_regions_in_place, convert_hidden_walls_to_indestructible_in_place
+from .features import place_features_in_place
+from .prefabs import apply_prefab_pass_in_place, load_prefabs_from_json
 
 
 class MapGenerator:
@@ -13,40 +17,87 @@ class MapGenerator:
         self.random = random.Random(params.seed)
 
     def generate(self) -> MapData:
-        grid = self._generate_random_layer()
-        spawns = self._generate_spawns()
+        p = self.params
 
-        if self.params.enforce_connected_floor:
-            grid = ensure_connectivity(grid)
+        team_a = list(p.team_a_spawns)
+        team_b = mirror_spawns_vertical(team_a, p.width) if p.mirror_spawns else []
+        spawns: SpawnDict = {"team1": team_a, "team2": team_b}
+
+        protected: Set[Tuple[int, int]] = set()
+        for sx, sy in team_a + team_b:
+            # protected disk around spawns (so CA/connectivity/features don't ruin them)
+            for yy in range(sy - p.spawn_clear_radius, sy + p.spawn_clear_radius + 1):
+                for xx in range(sx - p.spawn_clear_radius, sx + p.spawn_clear_radius + 1):
+                    protected.add((xx, yy))
+
+        # 1) CA base walls/floors
+        grid = generate_ca_walls_grid(
+            width=p.width,
+            height=p.height,
+            rng=self.random,
+            initial_wall_prob=p.ca_initial_wall_prob,
+            passes=p.ca_passes,
+            birth_limit=p.ca_birth_limit,
+            death_limit=p.ca_death_limit,
+        )
+
+        # 2) Force-clear spawn zones (after CA too)
+        for sx, sy in team_a + team_b:
+            carve_disk(grid, sx, sy, p.spawn_clear_radius, tile="FL")
+
+        # 3) Ensure connectivity by carving corridors between spawns
+        if p.enforce_connected_floor:
+            # 3a) connect spawns (core paths)
+            connect_spawns_in_place(
+                grid=grid,
+                spawns=(team_a + team_b),
+                rng=self.random,
+                corridor_radius=p.corridor_radius,
+                protected_radius=p.spawn_clear_radius,
+                extra_corridors=getattr(p, "extra_corridors", 0),
+                extra_corridor_radius=getattr(p, "extra_corridor_radius", None),
+            )
+
+            # 3b) ensure ALL cave parts are connected (not only spawns)
+            connect_all_floor_regions_in_place(
+                grid=grid,
+                spawns=(team_a + team_b),
+                rng=self.random,
+                corridor_radius=p.corridor_radius,
+                protected_radius=p.spawn_clear_radius,
+            )
+
+        # 3c) turn any walls not adjacent to floor into indestructible walls
+        convert_hidden_walls_to_indestructible_in_place(grid)
+
+        # 4) Place prefabs
+        if getattr(p, "prefabs_enabled", True):
+            prefabs = []
+            path = getattr(p, "prefabs_json_path", "")
+            if path:
+                try:
+                    prefabs = load_prefabs_from_json(path)
+                except Exception as e:
+                    # Fallback: no prefabs (and keep generation valid)
+                    prefabs = []
+
+            if prefabs:
+                apply_prefab_pass_in_place(
+                    grid=grid,
+                    rng=self.random,
+                    prefabs=prefabs,
+                    category="STRUCTURE",
+                    protected_centers=(team_a + team_b),
+                    protected_radius=p.spawn_clear_radius,
+                )
+                apply_prefab_pass_in_place(
+                    grid=grid,
+                    rng=self.random,
+                    prefabs=prefabs,
+                    category="FEATURE",
+                    protected_centers=(team_a + team_b),
+                    protected_radius=p.spawn_clear_radius,
+                )
+
 
         return MapData(grid=grid, spawns=spawns)
-
-    def _generate_random_layer(self) -> MapGrid:
-        w, h = self.params.width, self.params.height
-        grid = [["FL" for _ in range(w)] for _ in range(h)]
-
-        weights: List[TileId] = self._make_weight_list()
-        for y in range(h):
-            for x in range(w):
-                grid[y][x] = self.random.choice(weights)
-
-        return grid
-
-    def _make_weight_list(self) -> List[TileId]:
-        p = self.params
-        weights = (
-            ["FL"] * int(p.floor_percent * 100) +
-            ["IW"] * int(p.wall_percent * 100) +
-            ["WL"] * int(p.breakable_wall_percent * 100) +
-            ["WA"] * int(p.water_percent * 100) +
-            ["HO"] * int(p.holes_percent * 100) +
-            ["SP"] * int(p.spikes_percent * 100)
-        )
-        return weights if weights else ["FL"]
-
-    def _generate_spawns(self) -> SpawnDict:
-        teams = {
-            "team1": [],
-            "team2": []
-        }
-        return teams
