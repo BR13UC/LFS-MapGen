@@ -813,11 +813,11 @@
             { "x": 3, "y": 2, "tile": "WALL_BREAKABLE" }
         ]
     },
-    {
-        "id": "wall_mix_gate_9x5",
-        "category": "STRUCTURE",
-        "size": [9, 5],
-        "reserve": [11, 7],
+        {
+            "id": "wall_mix_gate_9x5",
+            "category": "STRUCTURE",
+            "size": [9, 5],
+            "reserve": [11, 7],
         "probability": 0.18,
         "before": [
             ["ANY", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "SOLID", "ANY"],
@@ -835,13 +835,52 @@
             { "x": 4, "y": 1, "tile": "WALL_BREAKABLE" },
             { "x": 4, "y": 2, "tile": "WALL_BREAKABLE" },
             { "x": 4, "y": 3, "tile": "WALL_BREAKABLE" }
-        ]
-    },
-    {
-        "id": "structure_wall_fortress_9x7",
-        "category": "STRUCTURE",
-        "size": [9, 7],
-        "reserve": [11, 9],
+            ]
+        },
+        {
+            "id": "wall_side_buttress_5x4",
+            "category": "STRUCTURE",
+            "size": [5, 4],
+            "reserve": [7, 6],
+            "probability": 0.20,
+            "before": [
+                ["SOLID", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "SOLID"],
+                ["SOLID", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "SOLID"],
+                ["SOLID", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "SOLID"],
+                ["SOLID", "ANY", "ANY", "ANY", "SOLID"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WALL_INBREAKABLE" },
+                { "x": 3, "y": 1, "tile": "WALL_INBREAKABLE" },
+                { "x": 1, "y": 2, "tile": "WALL_INBREAKABLE" },
+                { "x": 3, "y": 2, "tile": "WALL_INBREAKABLE" }
+            ]
+        },
+        {
+            "id": "wall_side_notches_7x4",
+            "category": "STRUCTURE",
+            "size": [7, 4],
+            "reserve": [9, 6],
+            "probability": 0.18,
+            "before": [
+                ["SOLID", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "SOLID"],
+                ["SOLID", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "SOLID"],
+                ["SOLID", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "MT:FLOOR", "SOLID"],
+                ["SOLID", "ANY", "ANY", "ANY", "ANY", "ANY", "SOLID"]
+            ],
+            "after": [
+                { "x": 1, "y": 1, "tile": "WALL_INBREAKABLE" },
+                { "x": 3, "y": 1, "tile": "WALL_INBREAKABLE" },
+                { "x": 5, "y": 1, "tile": "WALL_INBREAKABLE" },
+                { "x": 1, "y": 2, "tile": "WALL_INBREAKABLE" },
+                { "x": 5, "y": 2, "tile": "WALL_INBREAKABLE" }
+            ]
+        },
+        {
+            "id": "structure_wall_fortress_9x7",
+            "category": "STRUCTURE",
+            "size": [9, 7],
+            "reserve": [11, 9],
         "probability": 0.12,
         "before": [
             ["MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR","MT:FLOOR"],
